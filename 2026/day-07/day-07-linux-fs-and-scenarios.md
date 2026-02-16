@@ -295,3 +295,31 @@ Answer:
 
 
 ---
+
+ Check if a service is running
+
+Question: How do you check if the 'nginx' service is running?
+My Solution (Step by step):
+
+Step 1: Check service status
+
+systemctl status nginx
+To check the status of this command 
+if its Running will show in Green Color 
+
+
+Step 2: If service is not found, list all services
+
+systemctl list-units --type=service
+By running this command will display service which are running 
+
+
+Step 3: Check if service is enabled on boot
+
+systemctl is-enabled nginx
+This commnd will display its Enabled OR Disabled.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fd259bc1-21e3-4f41-a2b4-0dc7496bb29e" />
+
+
+
