@@ -268,29 +268,30 @@ Answer:
 /opt/
 ```
 
-azureuser@tws-azure-vm:/opt$ du -sh /var/log/* 2>/dev/null | sort -h | tail -5
-752K    /var/log/syslog.1
-1.1M    /var/log/sysstat
-6.5M    /var/log/auth.log.1
-7.2M    /var/log/btmp
-58M     /var/log/journal
-azureuser@tws-azure-vm:/opt$ cat /etc/hostname
-tws-azure-vm
-azureuser@tws-azure-vm:/opt$ ls -la ~
-total 40
-drwxr-x--- 4 azureuser azureuser 4096 Feb 16 04:30 .
-drwxr-xr-x 3 root      root      4096 Feb  8 15:14 ..
--rw------- 1 azureuser azureuser 1111 Feb  8 17:52 .bash_history
--rw-r--r-- 1 azureuser azureuser  220 Mar 31  2024 .bash_logout
--rw-r--r-- 1 azureuser azureuser 3771 Mar 31  2024 .bashrc
-drwx------ 2 azureuser azureuser 4096 Feb  8 15:14 .cache
--rw------- 1 azureuser azureuser   20 Feb 16 04:27 .lesshst
--rw-r--r-- 1 azureuser azureuser  807 Mar 31  2024 .profile
-drwx------ 2 azureuser azureuser 4096 Feb  8 15:14 .ssh
--rw-r--r-- 1 azureuser azureuser    0 Feb  8 15:17 .sudo_as_admin_successful
--rw-rw-r-- 1 azureuser azureuser  127 Feb 16 04:32 notes.txt
-azureuser@tws-azure-vm:/opt$
+      azureuser@tws-azure-vm:/opt$ du -sh /var/log/* 2>/dev/null | sort -h | tail -5
+      752K    /var/log/syslog.1
+      1.1M    /var/log/sysstat
+      6.5M    /var/log/auth.log.1
+      7.2M    /var/log/btmp
+      58M     /var/log/journal
+      azureuser@tws-azure-vm:/opt$ cat /etc/hostname
+      tws-azure-vm
+      azureuser@tws-azure-vm:/opt$ ls -la ~
+      total 40
+      drwxr-x--- 4 azureuser azureuser 4096 Feb 16 04:30 .
+      drwxr-xr-x 3 root      root      4096 Feb  8 15:14 ..
+      -rw------- 1 azureuser azureuser 1111 Feb  8 17:52 .bash_history
+      -rw-r--r-- 1 azureuser azureuser  220 Mar 31  2024 .bash_logout
+      -rw-r--r-- 1 azureuser azureuser 3771 Mar 31  2024 .bashrc
+      drwx------ 2 azureuser azureuser 4096 Feb  8 15:14 .cache
+      -rw------- 1 azureuser azureuser   20 Feb 16 04:27 .lesshst
+      -rw-r--r-- 1 azureuser azureuser  807 Mar 31  2024 .profile
+      drwx------ 2 azureuser azureuser 4096 Feb  8 15:14 .ssh
+      -rw-r--r-- 1 azureuser azureuser    0 Feb  8 15:17 .sudo_as_admin_successful
+      -rw-rw-r-- 1 azureuser azureuser  127 Feb 16 04:32 notes.txt
+      azureuser@tws-azure-vm:/opt$
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b2d61022-8f73-4b0d-9446-585286ffa22b" />
 
 
 ---
