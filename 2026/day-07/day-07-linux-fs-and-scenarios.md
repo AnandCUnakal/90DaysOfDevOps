@@ -295,6 +295,10 @@ Answer:
 
 
 ---
+**Scenario 1: Service Not Starting**
+A web application service called 'myapp' failed to start after a server reboot.
+What commands would you run to diagnose the issue?
+Write at least 4 commands in order.
 
  Check if a service is running
 
@@ -302,24 +306,96 @@ Question: How do you check if the 'nginx' service is running?
 My Solution (Step by step):
 
 Step 1: Check service status
-
-systemctl status nginx
-To check the status of this command 
-if its Running will show in Green Color 
-
-
-Step 2: If service is not found, list all services
-
-systemctl list-units --type=service
-By running this command will display service which are running 
-
-
-Step 3: Check if service is enabled on boot
-
-systemctl is-enabled nginx
-This commnd will display its Enabled OR Disabled.
+      
+      systemctl status nginx
+      To check the status of this command 
+      if its Running will show in Green Color 
+      
+      
+      Step 2: If service is not found, list all services
+      
+      systemctl list-units --type=service
+      By running this command will display service which are running 
+      
+      
+      Step 3: Check if service is enabled on boot
+      
+      systemctl is-enabled nginx
+      This commnd will display its Enabled OR Disabled.
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fd259bc1-21e3-4f41-a2b4-0dc7496bb29e" />
+
+**Scenario 2: High CPU Usage**
+Your manager reports that the application server is slow.
+You SSH into the server. What commands would you run to identify
+which process is using high CPU?
+
+Hint:
+      Use a command that shows live CPU usage
+      Look for processes sorted by CPU percentage
+      Note the PID (Process ID) of the top process
+Solution:
+By using top or htop command will show the live CPU usage
+using --sort argument for this ps command to get highest utilization of CPU in sorted order 
+easily can get PID of the process
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e222674b-f57b-448a-8736-846b53fa72b8" />
+
+**Scenario 3: Finding Service Logs** 
+```
+A developer asks: "Where are the logs for the 'docker' service?"
+The service is managed by systemd.
+What commands would you use?
+```
+```bash
+# Check service status first
+systemctl status ssh
+
+Using this command get know status of this service 
+
+# View last 50 lines of logs
+journalctl -u ssh -n 50
+Using this command can fetch 50 lines of logs 
+
+
+# Follow logs in real-time
+journalctl -u ssh -f
+it fetches real time logs 
+```
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4ceb912e-ef81-45e6-8b94-8e44aa40eb14" />
+
+
+**Scenario 4: File Permissions Issue** 
+```
+A script at /home/user/backup.sh is not executing.
+When you run it: ./backup.sh
+You get: "Permission denied"
+
+What commands would you use to fix this?
+```
+**Hint:**
+- First: Check what permissions the file has
+- Understand: Files need 'x' (execute) permission to run
+- Fix: Add execute permission with chmod
+
+**Step-by-step solution structure:**
+```
+Step 1: Check current permissions
+Command: ls -l /home/user/backup.sh
+Look for: -rw-r--r-- (notice no 'x' = not executable)
+
+Step 2: Add execute permission
+Command: chmod +x /home/user/backup.sh
+
+Step 3: Verify it worked
+Command: ls -l /home/user/backup.sh
+Look for: -rwxr-xr-x (notice 'x' = executable)
+
+Step 4: Try running it
+Command: ./backup.sh
+```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9f3eab63-883e-424d-8f3f-d19c33276986" />
 
 
 
