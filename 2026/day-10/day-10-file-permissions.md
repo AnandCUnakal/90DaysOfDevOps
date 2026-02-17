@@ -123,7 +123,13 @@ created directory
 ```
 
 ## What I Learned
-[3 key points]
+```
+Created a file like devops,txt,notes.txt & script.sh
+perovided execcute permission for script.sh and removed for other task in readonly mode but able to write content into it.
+ones i saved file and come out able to see inserted values in it.
+Added execute permission file script.sh file and its excuted after removing excute permission as well adding "bash ./script.sh "
+will shows the content.
+```
 
 
 
