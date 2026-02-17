@@ -130,6 +130,26 @@ ones i saved file and come out able to see inserted values in it.
 Added execute permission file script.sh file and its excuted after removing excute permission as well adding "bash ./script.sh "
 will shows the content.
 ```
+        azureuser@tws-azure-vm:~/day10$ ls -l
+        total 16
+        -r--r--r-- 1 azureuser azureuser   98 Feb 17 11:05 devops.txt
+        -rw-r----- 1 azureuser azureuser   29 Feb 17 10:46 notes.txt
+        drwxr-xr-x 2 azureuser azureuser 4096 Feb 17 10:50 project
+        -rw-rw-r-- 1 azureuser azureuser   32 Feb 17 11:51 script.sh
+        
+        azureuser@tws-azure-vm:~/day10$ chmod +x script.sh
+        azureuser@tws-azure-vm:~/day10$ ./script.sh
+        ./script.sh: line 1: !#/bin/bash: No such file or directory
+        Hello devops
+        
+        azureuser@tws-azure-vm:~/day10$ chmod -x script.sh
+        azureuser@tws-azure-vm:~/day10$ bash ./script.sh
+        ./script.sh: line 1: !#/bin/bash: No such file or directory
+        Hello devops
+        azureuser@tws-azure-vm:~/day10$ ./script.sh
+        bash: ./script.sh: Permission denied
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/73190ede-d7c1-4ffc-9213-b63ec115cafa" />
 
 
 
