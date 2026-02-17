@@ -4,7 +4,7 @@
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fdeaff61-0be4-4239-8d63-b7391b576adc" />
 
-<img width="454" height="1364" alt="image" src="https://github.com/user-attachments/assets/4c9dd750-e77c-4bf0-a7ab-b8f63a19f0df" />
+
 touch devops.txt
 touch notes.txt
 echo "Hello Devops" > vi script.sh
