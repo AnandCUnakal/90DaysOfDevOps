@@ -1,5 +1,5 @@
 ---
-
+'''
 ## Self-Assessment Checklist
 Mark yourself honestly — **can do**, **shaky**, or **haven't done**:
 
@@ -17,5 +17,5 @@ Mark yourself honestly — **can do**, **shaky**, or **haven't done**:
 - [ ] Write a multi-stage Dockerfile
 - [ ] Push an image to Docker Hub
 - [ ] Use healthchecks and depends_on
-
+'''
 ---
