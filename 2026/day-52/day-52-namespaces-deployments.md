@@ -1,4 +1,4 @@
-### Task 1: Explore Default Namespaces
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d547390f-901a-4801-ad36-c893c1db6bab" /><img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fc5d8e6b-27f6-4293-8259-98df9318abfb" />### Task 1: Explore Default Namespaces
 Kubernetes comes with built-in namespaces. List them:
 
 ```bash
@@ -65,6 +65,8 @@ Notice that `kubectl get pods` without `-n` only shows the `default` namespace. 
 
 **Verify:** Does `kubectl get pods` show these pods? What about `kubectl get pods -A`?
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/45281643-9e4f-41ff-af65-1ed0fd79c5c3" />
+
 ---
 
 ### Task 3: Create Your First Deployment
@@ -97,6 +99,9 @@ spec:
         - containerPort: 80
 ```
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6423e5da-7fd9-4321-b3d2-a3bac0284c30" />
+
+
 Key differences from a standalone Pod:
 - `kind: Deployment` instead of `kind: Pod`
 - `apiVersion: apps/v1` instead of `v1`
@@ -116,8 +121,11 @@ kubectl get pods -n dev
 ```
 
 You should see 3 pods with names like `nginx-deployment-xxxxx-yyyyy`.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/dc10889b-3383-4a4e-b173-1e5fb38a8dc5" />
+
 
 **Verify:** What do the READY, UP-TO-DATE, and AVAILABLE columns mean in the deployment output?
+
 
 ---
 
@@ -134,6 +142,8 @@ kubectl delete pod <pod-name> -n dev
 # Immediately check again
 kubectl get pods -n dev
 ```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fd915f08-c6f9-4821-8a5c-0708eb3b4e17" />
+
 
 The Deployment controller detects that only 2 of 3 desired replicas exist and immediately creates a new one. The deleted pod is replaced within seconds.
 
@@ -152,7 +162,11 @@ kubectl get pods -n dev
 # Scale down to 2
 kubectl scale deployment nginx-deployment --replicas=2 -n dev
 kubectl get pods -n dev
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0c4ae387-a845-477b-a58d-bc23a8db0658" />
+
 ```
+
 
 Watch how Kubernetes creates or terminates pods to match the desired count.
 
@@ -168,6 +182,7 @@ Update the Nginx image version to trigger a rolling update:
 ```bash
 kubectl set image deployment/nginx-deployment nginx=nginx:1.25 -n dev
 ```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8f35baf5-4adf-48b1-935d-5151c395e6d1" />
 
 Watch the rollout in real time:
 ```bash
