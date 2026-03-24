@@ -128,305 +128,64 @@ kubectl get pods
 Notice that when you delete a standalone Pod, it is gone forever. There is no controller to recreate it. This is why in production you use Deployments (coming on Day 52) instead of bare Pods.
 
 '''
-Perfect—this is where you transition from **Docker → real Kubernetes thinking**.
-Write your answers first, then use this to **verify and deepen understanding**.
 
----
 
-# ✅ Task 1: Kubernetes Story (Verify)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/60932914-739d-4d92-b42d-c5f5e7be3561" />
 
-### Why was Kubernetes created?
 
-Kubernetes was created to solve problems that **Docker alone cannot handle**:
 
-* Docker runs **single containers**, but not large-scale systems
-* No built-in way to:
+  482  kubectl get nodes
 
-  * manage thousands of containers
-  * auto-heal failures
-  * scale applications
-  * handle networking between containers across machines
 
-👉 Kubernetes solves:
+  485  kubectl run test-pod --image=nginx --dry-run=client -o yaml
 
-```text
-Container orchestration at scale
-```
+  487  cat nginx-pod.yml
+  488  kubectl run test-pod --image=nginx
+  489  kubectl get po
 
----
+  491  kubectl logs test-pod
+  492  docker ps
 
-### Who created Kubernetes?
+  494  docker exec -it kind-worker2 bash
+ 
+  498  kubectl describe po test-pod
+  499  docker pull nginx
 
-* Created by **Google**
-* Inspired by Google’s internal system called **Borg**
+  504  kubectl exec -it test-pod -- bash
+  505  vi busybox.yaml
+  506  kubectl apply -f busybox.yaml
 
----
 
-### What does "Kubernetes" mean?
+  509  cat busybox.yaml
+  510  docker pull busybox
+  511  kubectl get po -w
 
-* Greek word meaning:
+  515  kubectl exec -it busybox-pod -- bash
+  516  kubectl get po -w
+  517  kubectl exec -it busybox-pod -- sh
+  518  kubectl logs busybox-pod
+  
+  520  # Create a pod without a YAML file
+  521  kubectl run redis-pod --image=redis:latest
+  522  kubectl get po
+  523  docker pull redis
 
-```text
-"Helmsman" or "Ship Captain"
-```
+  525  kubectl get pod redis-pod -o yaml
 
-That’s why the logo is a **ship wheel ⚓**
+  532  kubectl apply -f nginx-pod.yml --dry-run=server
 
----
+  534  kubectl get pods -l app=test-pod
+  535  kubectl get pods -l run=test-pod
+  536  kubectl get pods -l environment=dev
+  537  kubectl lable pod test-pod run=test-pod
 
-# ✅ Task 2: Kubernetes Architecture (Verified)
+  539  kubectl label pod test-pod app=nginxpod
+  540  kubectl get po
 
-## Control Plane (Master Node)
+  542  kubectl get po --show-labels
+  543  kubectl label pod test-pod run-
 
-```
-API Server → Entry point
-etcd → Database
-Scheduler → Assigns pods to nodes
-Controller Manager → Maintains desired state
-```
-
----
-
-## Worker Node
-
-```
-kubelet → Node agent
-kube-proxy → Networking
-Container Runtime → Runs containers (containerd)
-```
-
----
-
-## 🔄 What happens when you run:
-
-```bash
-kubectl apply -f pod.yaml
-```
-
-### Flow:
-
-```text
-1. kubectl → API Server
-2. API Server validates request
-3. API Server stores desired state in etcd
-4. Scheduler finds best node
-5. kubelet (on node) receives instruction
-6. kubelet asks container runtime to start container
-7. Pod is created and running
-```
-
----
-
-## ❌ What if API Server goes down?
-
-* You **cannot create/update/delete resources**
-* Cluster keeps running existing workloads
-* No new deployments possible
-
----
-
-## ❌ What if Worker Node goes down?
-
-* Pods on that node are **lost**
-* Controller detects mismatch
-* Scheduler recreates pods on another node
-
-👉 This is **self-healing**
-
----
-
-# ✅ Task 3: kubectl
-
-Verify:
-
-```bash
-kubectl version --client
-```
-
-Expected:
-
-```text
-Client Version: v1.xx.x
-```
-
----
-
-# ✅ Task 4: Local Cluster Choice
-
-## Option A: kind
-
-**Best for DevOps learning**
-
-✔ Runs inside Docker
-✔ Lightweight
-✔ Fast startup
-✔ Great for CI/CD
-
----
-
-## Option B: minikube
-
-**Best for beginners**
-
-✔ Easier setup
-✔ GUI dashboard
-✔ Simulates real cluster better
-
----
-
-### Recommended Answer
-
-```text
-I chose kind because it is lightweight, fast, and integrates well with Docker and CI/CD pipelines.
-```
-
----
-
-# ✅ Task 5: Explore Cluster
-
-### Key Commands
-
-```bash
-kubectl cluster-info
-kubectl get nodes
-kubectl get pods -A
-kubectl get namespaces
-```
-
----
-
-## kube-system Pods Mapping
-
-When you run:
-
-```bash
-kubectl get pods -n kube-system
-```
-
-You’ll see:
-
-| Pod                     | Component          |
-| ----------------------- | ------------------ |
-| kube-apiserver          | API Server         |
-| etcd                    | Database           |
-| kube-scheduler          | Scheduler          |
-| kube-controller-manager | Controller         |
-| kube-proxy              | Networking         |
-| coredns                 | DNS inside cluster |
-
----
-
-### Important Insight
-
-```text
-Kubernetes components run as pods themselves!
-```
-
-This is a **self-hosted control plane**.
-
----
-
-# ✅ Task 6: Cluster Lifecycle
-
-### Delete cluster
-
-```bash
-kind delete cluster --name devops-cluster
-```
-
----
-
-### Recreate
-
-```bash
-kind create cluster --name devops-cluster
-```
-
----
-
-### Verify
-
-```bash
-kubectl get nodes
-```
-
----
-
-# 🧠 kubeconfig (Important Concept)
-
-### What is kubeconfig?
-
-A **configuration file** that tells `kubectl`:
-
-* which cluster to connect to
-* user credentials
-* authentication details
-* cluster endpoint
-
----
-
-### Where is it stored?
-
-```bash
-~/.kube/config
-```
-
----
-
-### Useful Commands
-
-```bash
-kubectl config current-context
-kubectl config get-contexts
-kubectl config view
-```
-
----
-
-# 🔥 Real DevOps Insight
-
-Your setup now looks like:
-
-```text
-kubectl → API Server → Cluster
-```
-
-This is exactly how:
-
-* CI/CD pipelines deploy apps
-* DevOps engineers manage clusters
-* Kubernetes operates in production
-
----
-
-# 🚀 What You Just Achieved
-
-You now understand:
-
-✔ Why Kubernetes exists
-✔ Core architecture
-✔ Control plane vs worker nodes
-✔ kubectl workflow
-✔ Cluster lifecycle
-✔ kubeconfig
-
----
-
-# 💡 Next Step (Critical)
-
-The **next milestone** is:
-
-```text
-Deploy your first application (Pod → Deployment → Service)
-```
-
-That’s where everything clicks.
-
----
-
-If you want, I’ll guide you next through:
-
-👉 **Deploying your Docker app into Kubernetes (end-to-end)**
-(with YAML + real commands + interview questions)
-
+  545  kubectl get all
+  546  history
+  547  history | awk '{print $2}' | sort | uniq -c | sort -rn
 '''
