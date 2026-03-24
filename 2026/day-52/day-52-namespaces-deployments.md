@@ -631,5 +631,7 @@ If you want, I’ll guide you next:
 
 That’s where Kubernetes becomes real 🔥
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1a87a644-ed2f-4596-bc25-b397ad8bc68a" />
+
 
 '''
