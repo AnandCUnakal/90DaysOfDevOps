@@ -1,4 +1,4 @@
----
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/93c02519-2dbb-427a-b10e-94c00f8188de" />---
 
 ## Challenge Tasks
 
@@ -214,6 +214,9 @@ kubectl exec -it nginx-config-pod -- curl -s http://localhost/health
 YES → "healthy"
 ```
 '''
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
 ---
 
 ### Task 4: Create a Secret
@@ -225,6 +228,8 @@ YES → "healthy"
 
 **Verify:** Can you decode the password back to plaintext?
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/20afcda4-56f6-407e-9942-4ea34ed63904" />
+
 ---
 
 ### Task 5: Use Secrets in a Pod
@@ -233,6 +238,8 @@ YES → "healthy"
 3. Verify: each Secret key becomes a file, and the content is the decoded plaintext value
 
 **Verify:** Are the mounted file values plaintext or base64?
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9239cc17-5ef3-470c-a8d8-dcd2d5643566" />
 
 ---
 
@@ -244,10 +251,12 @@ YES → "healthy"
 5. Environment variables from earlier tasks do NOT update — they are set at pod startup only
 
 **Verify:** Did the volume-mounted value change without a pod restart?
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ea22be55-990f-4a70-922e-3f0041367666" />
 
 ---
 
 ### Task 7: Clean Up
 Delete all pods, ConfigMaps, and Secrets you created.
+
 
 ---
